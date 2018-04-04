@@ -1,2 +1,2 @@
 # codingkatas
-solutions of my own coding katas
+solutions of my own java coding katas
