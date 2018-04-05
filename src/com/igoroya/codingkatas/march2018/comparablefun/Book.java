@@ -1,7 +1,5 @@
 package com.igoroya.codingkatas.march2018.comparablefun;
 
-import java.util.Arrays;
-
 public class Book implements Comparable<Book> {
 
 	private final int id;

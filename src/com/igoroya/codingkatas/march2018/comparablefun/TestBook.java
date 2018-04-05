@@ -31,7 +31,6 @@ class TestBook {
 		assertEquals(book1.hashCode(), book2.hashCode());
 		assertNotEquals(book1.hashCode(), book3.hashCode());
 		assertNotEquals(book1.hashCode(), book4.hashCode());
-		Book brokenBook = new Book(null, 1, 11.95f, null);
 	}
 
 	@Test

@@ -1,7 +1,5 @@
 package com.igoroya.codingkatas.march2018.sorting;
 
-import java.util.Arrays;
-
 public final class Utils {
 
 	public static void swap(int a, int b, int[] values) {
