@@ -42,8 +42,6 @@ public class MergeSort {
    */
   private void mergeOrdered(int[] aux, int low, int medium, int high) {
     
-  
-       
     int lowPrr = low;
     int highPtr = medium + 1;
     int upperBound = high;
