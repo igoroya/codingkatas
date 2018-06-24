@@ -20,7 +20,7 @@ public class Account {
       throw new IllegalArgumentException("Insufficient funds");
     }
     balance-=amount;
-    transactions.add(new TransactionEntry(amount, this.balance));
+    transactions.add(new TransactionEntry(-amount, this.balance));
   }
  
   public void deposit(int amount) {
