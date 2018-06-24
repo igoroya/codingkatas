@@ -36,4 +36,15 @@ public class Account {
     return Collections.unmodifiableList(transactions);
   }
   
+  
+  public void printStatement() {
+    String header =  String.format("%10s%+7d%9d", "Date", "Amount", "Balance");
+    
+    System.out.println(header);
+    
+    for (TransactionEntry entry : transactions ) {
+      System.out.println(entry);
+    }
+  }
+  
 }
