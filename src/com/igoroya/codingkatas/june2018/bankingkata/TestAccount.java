@@ -2,6 +2,8 @@ package com.igoroya.codingkatas.june2018.bankingkata;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
@@ -49,10 +51,15 @@ class TestAccount {
     Account account = new Account();
     
     int valueToDeposit = 100;
+    
+    Date aboutToDepositDate = Date.from(Instant.now());
     account.deposit(valueToDeposit);
     List<TransactionEntry> statement = account.getStatement();
     int addedAmount = statement.get(statement.size() - 1).transactionValue;
     assertEquals(valueToDeposit, addedAmount);
+    
+    Date transactionDate = statement.get(statement.size() - 1).date;
+    assertTrue(transactionDate.after(aboutToDepositDate));
     
     int valueToWithdraw = 50;
     int expectedBalance = 50;
@@ -60,6 +67,13 @@ class TestAccount {
     statement = account.getStatement();
     int balance = statement.get(statement.size() - 1).balanceAtTransaction;
     assertEquals(expectedBalance, balance);
+    
+    int previousBalance = statement.get(statement.size() - 2).balanceAtTransaction;
+    assertEquals(100, previousBalance);
+    
+    int previousTransaction = statement.get(statement.size() - 2).transactionValue;
+    assertEquals(valueToDeposit, previousTransaction);
+    
     
     
   }
