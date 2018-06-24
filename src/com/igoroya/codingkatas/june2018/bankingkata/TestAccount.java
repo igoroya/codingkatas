@@ -4,9 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Calendar;
+
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -80,11 +84,21 @@ class TestAccount {
 
   @Test
   void testTransactionEntry( ) {
-    int transactionValue = 500;
-    int balanceAtTransaction = 500;
+    
+    SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
+    int transactionValue = 400;
+    int balanceAtTransaction = 400;
+    String nowDate = dateFormatter.format(new Date());
     TransactionEntry entry = new TransactionEntry(transactionValue, balanceAtTransaction);
+   
     assertEquals(transactionValue, entry.transactionValue);
     assertEquals(balanceAtTransaction, entry.balanceAtTransaction);
+    String myDate = dateFormatter.format(entry.date);
+    System.out.println(myDate);
+    assertEquals(nowDate, myDate);
+    
+    String expectedString = nowDate + "   +" + transactionValue +"      " + balanceAtTransaction;
+    assertEquals(expectedString, entry.toString());
     
   }
   
