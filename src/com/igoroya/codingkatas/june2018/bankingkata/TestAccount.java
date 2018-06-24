@@ -104,22 +104,28 @@ class TestAccount {
   
   
   @Test
-  void testPrintStatement( ) {
+  void testPrintStatementOneTransaction() {
   
     ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     System.setOut(new PrintStream(outContent));
    
     Account account = new Account();
     int valueToDeposit = 500;
-    //Date aboutToDepositDate = Date.from(Instant.now());
+    Date aboutToDepositDate = Date.from(Instant.now());
     account.deposit(valueToDeposit);
     
     account.printStatement();
     
-    String expectedOutput  = "Date        Amount  Balance\n" + 
-                             "24.12.2015   +500      500";
+    SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
+    String dateRep = dateFormatter.format(aboutToDepositDate);  
     
-    //assertEquals(expectedOutput, outContent.toString());
+    String formattedTr1Output = String.format("%10s%+7d%9d", dateRep, valueToDeposit, valueToDeposit);
+
+    
+    String expectedOutput  = "Date        Amount  Balance\n" + 
+        formattedTr1Output + "\n";
+    
+    assertEquals(expectedOutput, outContent.toString());
     
   }
   

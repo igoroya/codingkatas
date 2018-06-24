@@ -38,7 +38,7 @@ public class Account {
   
   
   public void printStatement() {
-    String header =  String.format("%10s%+7d%9d", "Date", "Amount", "Balance");
+    String header =  String.format("%s%14s%9s", "Date", "Amount", "Balance");
     
     System.out.println(header);
     
