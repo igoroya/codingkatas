@@ -14,6 +14,8 @@ public class OddCalculator {
     System.out.println(isOdd(odd));
     int even = 12;
     System.out.println(isOdd(even));
+    int otherEven = 18;
+    System.out.println(isOdd(otherEven));
   }
 
 }
